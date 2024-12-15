@@ -16,48 +16,40 @@ function createCard(data) {
 }
 
 button && button.addEventListener("click", function () {
-  const word = input.value;
-  if (!word) return;
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/<word>`, {
+      method: "GET"
 
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-    method: "GET"
-  
-        .then(response => {
+        .then((response) => {
           if (response.status === 200) {
             return response.json();
           }
         })
-         .then(data => {
-           const cardHtml = createCard(data);
-          })
-         .catch(error => {
-           console.error(error);
-          });
-});
+        .then((data) => {
+           wrapper.innerHTML += card
+        })
 
+        .catch((error) => {
+          console.log(error);
+        }),
+    });
+  });
 
-
-const btn = document.querySelector(".DayNight"); 
-const img = document.querySelector('.oval-img');
+const btn = document.querySelector(".DayNight");
+const img = document.querySelector(".oval-img");
+const body = document.body;
 
 btn.addEventListener("click", function () {
-  const body = document.body; 
   if (body.style.backgroundColor === "black") {
     body.style.backgroundColor = "white";
-    body.style.color = "black"; 
+    body.style.color = "black";
   } else {
-    body.style.backgroundColor = "black"; 
+    body.style.backgroundColor = "black";
     body.style.color = "white";
   }
-  
 
-  if (img.style.marginRight = '4px') {
-    img.style.marginLeft = '4px'
-  } else if ( img.style.marginLeft = '4px') {
-    img.style.marginRight = '4px'
+  if (img.style.marginLeft === "4px") {
+    img.style.marginLeft = "-15px";
+  } else {
+    img.style.marginLeft = "4px";
   }
-
 });
-
-
-
