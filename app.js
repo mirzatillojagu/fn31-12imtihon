@@ -17,8 +17,7 @@ function createCard(data) {
 
 button && button.addEventListener("click", function () {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/<word>`, {
-      method: "GET"
-
+      method: "GET" 
         .then((response) => {
           if (response.status === 200) {
             return response.json();
@@ -52,4 +51,44 @@ btn.addEventListener("click", function () {
   } else {
     img.style.marginLeft = "4px";
   }
+});
+
+
+const shriftContainer = document.querySelector(".shrift2");
+const shriftText = document.querySelector(".shrift");
+const shriftImg = document.querySelector(".shrift-img");
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const shriftList = document.createElement("ul");
+  shriftList.classList.add("shrift-list"); 
+  shriftContainer.style.position = "relative";
+
+  const fonts = ["sans-serif", "serif", "cursive"];
+  fonts.forEach(v => {
+    const listItem = document.createElement("li");
+    listItem.textContent = v.charAt(0).toUpperCase() + v.slice(1);
+    listItem.classList.add("shrift-item", v);
+
+    listItem.addEventListener("click", () => {
+      shriftText.textContent = listItem.textContent;
+      document.body.className = "";
+      document.body.classList.add(v);   
+      shriftList.style.display = "none";
+    });
+
+    shriftList.appendChild(listItem);
+  });
+
+  shriftImg.addEventListener("click", () => {
+    shriftList.style.display = shriftList.style.display === "none" ? "block" : "none";
+  });
+
+  shriftContainer.appendChild(shriftList);
+
+  document.addEventListener("click", (event) => {
+    if (!shriftContainer.contains(event.target)) {
+      shriftList.style.display = "none";
+    }
+  });
 });

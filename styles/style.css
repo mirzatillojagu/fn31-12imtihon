@@ -87,7 +87,7 @@ body {
 #input {
   border: none;
   outline: none;
-  background: transparent;
+  background-color: transparent;
   flex-grow: 1;
   font-size: 14px;
 }
@@ -137,4 +137,47 @@ body {
 .img {
   width: 24px;
   height: 24px;
+}
+
+.shrift-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+  width: 150px;
+  display: none; 
+  z-index: 10;
+}
+
+.shrift-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+
+.shrift-item:hover {
+  background: #f1f1f1;
+}
+
+.sans-serif {
+  font-family: "Arial", sans-serif;
+}
+
+.serif {
+  font-family: "Georgia", serif;
+}
+
+.monospace {
+  font-family: "Courier New", monospace;
+}
+
+.cursive {
+  font-family: "Comic Sans MS", cursive;
 }
