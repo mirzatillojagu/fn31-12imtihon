@@ -33,7 +33,7 @@ body {
   left: 20px;
   cursor: pointer;
   position: absolute;
-  margin-left: 610px;
+  margin-left: 630px;
   margin-top: -18px;
 }
 
@@ -46,6 +46,14 @@ body {
   height: 14px;
   margin-left: -17px;
   margin-top: -6px;
+
+}
+
+hr {
+  width: 1px;
+  height: 25px;
+  margin-right: 90px;
+  position: absolute;
 }
 
 .right {
