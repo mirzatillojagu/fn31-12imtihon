@@ -16,22 +16,25 @@ function createCard(data) {
 }
 
 button && button.addEventListener("click", function () {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/<word>`, {
-      method: "GET" 
-        .then((response) => {
-          if (response.status === 200) {
-            return response.json();
-          }
-        })
-        .then((data) => {
-           wrapper.innerHTML += card
-        })
-
-        .catch((error) => {
-          console.log(error);
-        }),
-    });
+  let sum=input.value;
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${sum}`, {
+      method: "GET",
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        let card = createCard(data);
+        wrapper.innerHTML = card;
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   });
+
 
 const btn = document.querySelector(".DayNight");
 const img = document.querySelector(".oval-img");
@@ -53,42 +56,4 @@ btn.addEventListener("click", function () {
   }
 });
 
-
-const shriftContainer = document.querySelector(".shrift2");
-const shriftText = document.querySelector(".shrift");
-const shriftImg = document.querySelector(".shrift-img");
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const shriftList = document.createElement("ul");
-  shriftList.classList.add("shrift-list"); 
-  shriftContainer.style.position = "relative";
-
-  const fonts = ["sans-serif", "serif", "cursive"];
-  fonts.forEach(v => {
-    const listItem = document.createElement("li");
-    listItem.textContent = v.charAt(0).toUpperCase() + v.slice(1);
-    listItem.classList.add("shrift-item", v);
-
-    listItem.addEventListener("click", () => {
-      shriftText.textContent = listItem.textContent;
-      document.body.className = "";
-      document.body.classList.add(v);   
-      shriftList.style.display = "none";
-    });
-
-    shriftList.appendChild(listItem);
-  });
-
-  shriftImg.addEventListener("click", () => {
-    shriftList.style.display = shriftList.style.display === "none" ? "block" : "none";
-  });
-
-  shriftContainer.appendChild(shriftList);
-
-  document.addEventListener("click", (event) => {
-    if (!shriftContainer.contains(event.target)) {
-      shriftList.style.display = "none";
-    }
-  });
-});
+         
