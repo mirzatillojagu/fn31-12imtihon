@@ -11,10 +11,14 @@
         <img class="img" src="./image/book.svg" alt="">
         <div class="right">
             <div class="shrift2">
-                <h3 class="shrift">Sans Serif</h3>
-                <img class="shrift-img" src="./image/right.svg" alt="">
+                <select id="font-selector">
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="'Courier New', monospace">Courier New</option>
+                    <option value="'Georgia', serif">Georgia</option>
+                    <option value="'Times New Roman', serif">Times New Roman</option>
+                    <option value="'Verdana', sans-serif">Verdana</option>
+                </select>
             </div>
-             
             <hr>
             <button class="DayNight">
                 <img class="oval-img" src="./image/Oval.svg" width="14" height="14" alt="">
@@ -27,8 +31,9 @@
             <img class="search-img" src="./image/search.svg" alt="">
         </form>
         
-        <div class="wrapper"></div>
-</div>
+        <div class="wrapper">
+        </div>
+    </div>
     <script src="./app.js" type="module"></script>
 </body>
 </html>
